@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🔋 Shizuku Power Control"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#6200EE"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnListApps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📋 قائمة التطبيقات"
+            android:layout_marginRight="4dp"
+            android:backgroundTint="#6200EE"/>
+
+        <Button
+            android:id="@+id/btnDisableApp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🚫 تعطيل تطبيق"
+            android:backgroundTint="#F44336"/>
+    <Button 
+        android:id="@+id/btnDeviceAdmin" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:text="👑 تفعيل مالك الجهاز" 
+        android:backgroundTint="#FF5722" 
+        android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnForceStop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⏹️ إيقاف تطبيق"
+            android:layout_marginRight="4dp"
+            android:backgroundTint="#FF9800"/>
+
+        <Button
+            android:id="@+id/btnSystemSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⚙️ إعدادات النظام"
+            android:backgroundTint="#4CAF50"/>
+    <Button 
+        android:id="@+id/btnDeviceAdmin" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:text="👑 تفعيل مالك الجهاز" 
+        android:backgroundTint="#FF5722" 
+        android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnCustomCommand"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⌨️ أمر مخصص"
+            android:layout_marginRight="4dp"
+            android:backgroundTint="#9C27B0"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🧹 مسح"
+            android:backgroundTint="#607D8B"/>
+    <Button 
+        android:id="@+id/btnDeviceAdmin" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:text="👑 تفعيل مالك الجهاز" 
+        android:backgroundTint="#FF5722" 
+        android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvOutput"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:textSize="12sp"
+        android:typeface="monospace"
+        android:scrollbars="vertical"
+        android:textColor="#333333"
+        android:gravity="top"/>
+
+    <Button 
+        android:id="@+id/btnDeviceAdmin" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:text="👑 تفعيل مالك الجهاز" 
+        android:backgroundTint="#FF5722" 
+        android:layout_marginBottom="16dp"/>
+</LinearLayout>
