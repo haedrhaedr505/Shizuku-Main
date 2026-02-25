@@ -105,15 +105,14 @@ public class ShizukuShellLoader {
         }
 
         try {
-            var classLoader = new BaseDexClassLoader(sourceDir, null, librarySearchPath, ClassLoader.getSystemClassLoader());
-            Class<?> cls = classLoader.loadClass("moe.shizuku.manager.shell.Shell");
-            cls.getDeclaredMethod("main", String[].class, String.class, IBinder.class, Handler.class)
-                    .invoke(null, args, callingPackage, binder, handler);
-        } catch (ClassNotFoundException tr) {
-            System.err.println("Class not found");
-            System.err.println("Make sure you have Shizuku v12.0.0 or above installed");
-            System.err.flush();
-            System.exit(1);
+            try {
+                var classLoader = new BaseDexClassLoader(sourceDir, null, librarySearchPath, ClassLoader.getSystemClassLoader());
+                Class<?> cls = classLoader.loadClass("moe.shizuku.manager.shell.Shell");
+                cls.getDeclaredMethod("main", String[].class, String.class, IBinder.class, Handler.class)
+                        .invoke(null, args, callingPackage, binder, handler);
+            } catch (ClassNotFoundException e) {
+                launchTerminalActivity(binder, sourceDir);
+            }
         } catch (Throwable tr) {
             tr.printStackTrace(System.err);
             System.err.flush();
@@ -169,3 +168,32 @@ public class ShizukuShellLoader {
         System.exit(1);
     }
 }
+
+    private static void launchTerminalActivity(IBinder binder, String sourceDir) {
+        try {
+            Intent intent = new Intent();
+            intent.setClassName("moe.shizuku.privileged.api",
+                               "rikka.shizuku.shell.terminal.ADBTerminalActivity");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            Bundle bundle = new Bundle();
+            bundle.putBinder("shizuku_binder", binder);
+            bundle.putString("source_dir", sourceDir);
+            bundle.putStringArray("args", args);
+            bundle.putString("package_name", callingPackage);
+            intent.putExtra("data", bundle);
+
+            IActivityManager am;
+            IBinder amBinder = ServiceManager.getService("activity");
+            if (Build.VERSION.SDK_INT >= 26) {
+                am = IActivityManager.Stub.asInterface(amBinder);
+            } else {
+                am = ActivityManagerNative.asInterface(amBinder);
+            }
+            am.startActivityAsUser(null, callingPackage, intent, null, null, null, 0, 0, null, null, Os.getuid() / 100000);
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+            System.err.flush();
+            System.exit(1);
+        }
+    }
