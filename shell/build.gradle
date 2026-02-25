@@ -10,7 +10,7 @@ android {
     defaultConfig {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-        minSdk 21
+        minSdk 23  # تم التعديل من 21 إلى 23
         targetSdk 35
     }
     
